@@ -1,3 +1,4 @@
+// src\components\InsideTheBook.tsx
 import React from "react";
 import { inSideBookData } from "../utils/inSideBookData";
 import { IoRemoveOutline } from "react-icons/io5";
@@ -31,11 +32,11 @@ const InsideTheBook = () => {
         </div>
         <div>আপনি যা যা এক্সপ্লোর করবেন! </div>
       </div>
-      <div className=" grid grid-cols-2 gap-x-4 gap-y-16">
+      <div className=" md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-16">
         {inSideBookData.map((data, index) => (
           <div
             key={data.id}
-            className={`p-4 rounded-lg shadow-md relative ${
+            className={`p-4 rounded-lg shadow-md relative mb-16 md:mb-1 ${
               index === 0 || index === 1 || index === 6
                 ? "bg-bgColor4"
                 : "bg-bgColor5"
@@ -64,19 +65,18 @@ const InsideTheBook = () => {
                   const hasTitle = "extraContentTitle" in item;
 
                   return (
-                    <div
-                      key={item.extraContentId}
-                      className="flex items-start py-2 px-3"
-                    >
-                      <span className="mr-2 text-3xl leading-none">•</span>
-                      {hasTitle && (
-                        <span className="font-bold mr-1 whitespace-nowrap">
-                          {item.extraContentTitle}:
+                    <div key={item.extraContentId} className="flex items-start py-2 ">
+                      <span className="mr-2 text-2xl leading-none">•</span>
+                      <div className="flex flex-col">
+                        {hasTitle && (
+                          <span className="font-bold  whitespace-nowrap">
+                            {item.extraContentTitle}:
+                          </span>
+                        )}
+                        <span>
+                          {item.extraContentDescription}
                         </span>
-                      )}
-                      <span className="flex-1">
-                        {item.extraContentDescription}
-                      </span>
+                      </div>
                     </div>
                   );
                 })}
