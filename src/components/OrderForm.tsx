@@ -1,3 +1,4 @@
+// src/components/OrderForm.tsx
 "use client";
 import React, { useState } from "react";
 import { FaHandPointRight } from "react-icons/fa";
@@ -20,17 +21,33 @@ const OrderForm: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log(formData);
+    // Send a POST request to the API to create a new order
+    const response = await fetch('/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
 
+    const data = await response.json();
+
+    if (response.ok) {
+      alert(`Order placed successfully! Order ID: ${data.orderId}`);
+    } else {
+      alert(`Failed to place order: ${data.message}`);
+    }
+
+    // Reset form fields
     setFormData({
       name: "",
       phoneNumber: "",
       paymentNumber: "",
       transactionId: "",
-      deliveryAddress: "", 
+      deliveryAddress: "",
     });
   };
 
@@ -40,20 +57,20 @@ const OrderForm: React.FC = () => {
         <h2 className="text-3xl font-bold text-blueTextColor text-center mb-4">
           বইয়ের অর্ডার ফরম
         </h2>
-        <div className="flex  items-center gap-2 leading-loose mb-2 ">
+        <div className="flex items-center gap-2 leading-loose mb-2">
           <FaHandPointRight className="text-blueTextColor" />{" "}
           <p>বইয়ের দাম ৩৮০ টাকা</p>
         </div>
-        <div className="flex  items-start gap-2 leading-loose mb-2 ">
+        <div className="flex items-start gap-2 leading-loose mb-2">
           <div className="pt-2">
-            <FaHandPointRight className="text-blueTextColor  flex-shrink-0" />
+            <FaHandPointRight className="text-blueTextColor flex-shrink-0" />
           </div>
           <p>
             01608433453 (এটা বিকাশ মার্চেন্ট নাম্বার) আপনি অ্যাপ এর
             &apos;পেমেন্ট&apos; অপশন থেকে এ নাম্বারে বিকাশ করুন
           </p>
         </div>
-        <div className="flex  items-center gap-2 leading-loose mb-2 ">
+        <div className="flex items-center gap-2 leading-loose mb-2">
           <FaHandPointRight className="text-blueTextColor" />{" "}
           <p>নিচের বক্সগুলো ফিলাপ করুন</p>
         </div>
@@ -106,7 +123,7 @@ const OrderForm: React.FC = () => {
           <div className="mb-4">
             <textarea
               name="deliveryAddress"
-              placeholder="ডেলিভারির ঠিকানা"
+              placeholder="ডেলিভিরির ঠিকানা"
               value={formData.deliveryAddress}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
