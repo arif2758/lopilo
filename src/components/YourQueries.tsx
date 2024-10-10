@@ -21,7 +21,7 @@ const YourQueries = () => {
             <AccordionContent>৩৮০ টাকা</AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger>
+            <AccordionTrigger> 
               বইটি কবে (কতোটুকু সময়ের মধ্যে) ডেলিভারি পাবো?
             </AccordionTrigger>
             <AccordionContent>
