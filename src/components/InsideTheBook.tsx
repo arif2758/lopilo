@@ -6,11 +6,10 @@ import { IoRemoveOutline } from "react-icons/io5";
 const InsideTheBook = () => {
   return (
     <div className="mt-8 md:mx-[5%]">
-      <div className="flex justify-center items-center text-4xl mb-12 font-bold">
+      <div className="flex flex-col md:flex-row justify-center items-center text-4xl mb-12 font-bold">
         <div className="my-12 text-center relative">
           <h2 className="text-4xl font-bold text-blueTextColor">
-            {" "}
-            Inside the book,{" "}
+            Inside the book,
           </h2>
 
           <svg
@@ -30,13 +29,16 @@ const InsideTheBook = () => {
             />
           </svg>
         </div>
-        <div>আপনি যা যা এক্সপ্লোর করবেন! </div>
+        <div className="text-center mt-4 md:mt-0 md:ml-4">
+          আপনি যা যা এক্সপ্লোর করবেন!{" "}
+        </div>
       </div>
+
       <div className=" md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-16">
         {inSideBookData.map((data, index) => (
           <div
             key={data.id}
-            className={`p-4 rounded-lg shadow-md relative mb-16 md:mb-1 ${
+            className={`p-4 rounded-lg shadow-md relative mt-16 mb-16 md:mb-1 ${
               index === 0 || index === 1 || index === 6
                 ? "bg-bgColor4"
                 : "bg-bgColor5"
@@ -65,7 +67,10 @@ const InsideTheBook = () => {
                   const hasTitle = "extraContentTitle" in item;
 
                   return (
-                    <div key={item.extraContentId} className="flex items-start py-2 ">
+                    <div
+                      key={item.extraContentId}
+                      className="flex items-start py-2 "
+                    >
                       <span className="mr-2 text-2xl leading-none">•</span>
                       <div className="flex flex-col">
                         {hasTitle && (
@@ -73,9 +78,7 @@ const InsideTheBook = () => {
                             {item.extraContentTitle}:
                           </span>
                         )}
-                        <span>
-                          {item.extraContentDescription}
-                        </span>
+                        <span>{item.extraContentDescription}</span>
                       </div>
                     </div>
                   );
