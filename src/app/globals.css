@@ -113,3 +113,19 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+@keyframes pulseEffect {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.02); /* Adds a slight expansion for spring effect */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

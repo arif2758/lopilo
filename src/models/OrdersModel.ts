@@ -1,13 +1,13 @@
 import { Schema, model, models, Document } from "mongoose";
 
 
-interface IOrder extends Document {
+export interface IOrder extends Document {
   orderId: string;
   name: string;
   mobile: string;
   address: string;
   bkashNumber: string;
-  transactionId: string;
+  transactionId: string; 
 }
 
 
@@ -22,3 +22,4 @@ const OrderSchema = new Schema<IOrder>({
 
 export const OrderCollectionModel =
   models.Order || model<IOrder>("Order", OrderSchema);
+ 
