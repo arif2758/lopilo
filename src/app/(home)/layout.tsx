@@ -31,9 +31,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-bgColor1   overflow-x-hidden`}
       >
-        <div className="text-center pt-4 "> 
-          <Link href={"/admin"}> Dashbord</Link>
+        <div className="text-center pt-4">
+          <Link
+            href="/admin"
+            className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-all duration-300 ease-in-out hover:bg-blue-500 hover:shadow-lg"
+          >
+            Dashboard
+          </Link>
         </div>
+
         <main> {children} </main>
 
         <Toaster />
